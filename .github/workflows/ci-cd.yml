@@ -28,6 +28,7 @@ jobs:
         run: |
           docker push biliwiske/app_order:latest
 
+
   test-app-order:
     name: Run app_order tests
     runs-on: ubuntu-latest
@@ -95,6 +96,8 @@ jobs:
       - name: Push tag YC Registry
         run: |
           docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/delivery_service/app_document:latest
+
+
 
   deploy:
     name: Deploy

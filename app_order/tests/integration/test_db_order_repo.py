@@ -22,7 +22,7 @@ def order_id() -> UUID:
 
 @pytest.fixture(scope='session')
 def first_order() -> Order:
-    return Order(ord_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
+    return Order(order_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
                  address_info='test_address_info_1', customer_info='test_customer_info_1',
                  create_date=datetime.now(), completion_date=datetime.now(),
                  order_info='test_order_info_1')
@@ -30,7 +30,7 @@ def first_order() -> Order:
 
 @pytest.fixture(scope='session')
 def second_order() -> Order:
-    return Order(ord_id=UUID('14ccc207-9a81-47e6-98ac-53857e32954c'), status=OrderStatus.CREATE,
+    return Order(order_id=UUID('14ccc207-9a81-47e6-98ac-53857e32954c'), status=OrderStatus.CREATE,
                  address_info='test_address_info_1', customer_info='test_customer_info_1',
                  create_date=datetime.now(), completion_date=datetime.now(),
                  order_info='test_order_info_1')
@@ -51,7 +51,7 @@ def test_add_first_order_repeat(first_order: Order, order_repo: OrderRepo) -> No
 
 
 def test_get_order_by_id(first_order: Order, order_repo: OrderRepo) -> None:
-    assert order_repo.get_order_by_id(first_order.ord_id) == first_order
+    assert order_repo.get_order_by_id(first_order.order_id) == first_order
 
 
 def test_get_order_by_id_error(order_repo: OrderRepo) -> None:
@@ -61,7 +61,7 @@ def test_get_order_by_id_error(order_repo: OrderRepo) -> None:
 
 def test_add_second_order(first_order: Order, second_order: Order, order_repo: OrderRepo) -> None:
     assert order_repo.create_order(second_order) == second_order
-    orders = [order_repo.get_order_by_id(first_order.ord_id), order_repo.get_order_by_id(second_order.ord_id)]
+    orders = [order_repo.get_order_by_id(first_order.order_id), order_repo.get_order_by_id(second_order.order_id)]
     assert len(orders) == 2
     assert orders[0] == first_order
     assert orders[1] == second_order
@@ -88,5 +88,5 @@ def test_set_status(first_order: Order, order_repo: OrderRepo) -> None:
 
 
 def test_delete_created_order(first_order: Order, second_order: Order, order_repo: OrderRepo) -> None:
-    assert order_repo.delete_order_by_id(first_order.ord_id) == first_order
-    assert order_repo.delete_order_by_id(second_order.ord_id) == second_order
+    assert order_repo.delete_order_by_id(first_order.order_id) == first_order
+    assert order_repo.delete_order_by_id(second_order.order_id) == second_order

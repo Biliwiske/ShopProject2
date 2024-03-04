@@ -16,7 +16,7 @@ def test_empty_list() -> None:
 
 
 def test_add_first_order() -> None:
-    order = Order(ord_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
+    order = Order(order_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
                   address_info='test_address_info_0', customer_info='test_customer_info_0',
                   create_date=datetime.now(), completion_date=datetime.now(),
                   order_info='test_order_info_0')
@@ -24,7 +24,7 @@ def test_add_first_order() -> None:
 
 
 def test_add_first_order_repeat() -> None:
-    order = Order(ord_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
+    order = Order(order_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE,
                   address_info='test_address_info_0', customer_info='test_customer_info_0',
                   create_date=datetime.now(), completion_date=datetime.now(),
                   order_info='test_order_info_0')
@@ -34,12 +34,12 @@ def test_add_first_order_repeat() -> None:
 
 
 def test_get_order_by_id() -> None:
-    order = Order(ord_id=uuid4(), status=OrderStatus.CREATE,
+    order = Order(order_id=uuid4(), status=OrderStatus.CREATE,
                   address_info='test_address_info_0', customer_info='test_customer_info_0',
                   create_date=datetime.now(), completion_date=datetime.now(),
                   order_info='test_order_info_0')
     order_test_repo.create_order(order)
-    assert order_test_repo.get_order_by_id(order.ord_id) == order
+    assert order_test_repo.get_order_by_id(order.order_id) == order
 
 
 def test_get_order_by_id_error() -> None:
@@ -48,7 +48,7 @@ def test_get_order_by_id_error() -> None:
 
 
 def test_set_status() -> None:
-    order = Order(ord_id=uuid4(), status=OrderStatus.CREATE,
+    order = Order(order_id=uuid4(), status=OrderStatus.CREATE,
                   address_info='test_address_info_0', customer_info='test_customer_info_0',
                   create_date=datetime.now(), completion_date=datetime.now(),
                   order_info='test_order_info_0')

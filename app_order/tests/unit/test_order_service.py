@@ -69,7 +69,7 @@ def test_done_order_status_error(
 ) -> None:
     with pytest.raises(ValueError):
         orders = order_service.get_order()
-        order_service.done_order(orders[0].ord_id)
+        order_service.done_order(orders[0].order_id)
 
 
 def test_done_order_not_found(
@@ -91,9 +91,9 @@ def test_accepted_delivery(
         order_service: OrderService
 ) -> None:
     order = order_service.get_order()[0]
-    order_service.accepted_order(order.ord_id)
+    order_service.accepted_order(order.order_id)
     assert order.status == OrderStatus.ACCEPTED
-    assert order.ord_id == order_service.get_order()[0].ord_id
+    assert order.order_id == order_service.get_order()[0].order_id
 
 
 def test_done_delivery(
@@ -102,6 +102,6 @@ def test_done_delivery(
 ) -> None:
     order = order_service.get_order()[0]
     order.status = OrderStatus.PAID
-    order_service.done_order(order.ord_id)
+    order_service.done_order(order.order_id)
     assert order.status == OrderStatus.DONE
-    assert order.ord_id == order_service.get_order()[0].ord_id
+    assert order.order_id == order_service.get_order()[0].order_id
