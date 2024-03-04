@@ -57,16 +57,13 @@ def test_set_status() -> None:
     order.status = OrderStatus.CREATE
     assert order_test_repo.set_status(order).status == order.status
 
-    order.status = OrderStatus.PICK_UP
+    order.status = OrderStatus.PAID
     assert order_test_repo.set_status(order).status == order.status
 
     order.status = OrderStatus.DELIVERING
     assert order_test_repo.set_status(order).status == order.status
 
     order.status = OrderStatus.DELIVERED
-    assert order_test_repo.set_status(order).status == order.status
-
-    order.status = OrderStatus.PAID
     assert order_test_repo.set_status(order).status == order.status
 
     order.status = OrderStatus.DONE
