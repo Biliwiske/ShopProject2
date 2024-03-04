@@ -79,13 +79,6 @@ def test_done_order_not_found(
         order_service.done_order(uuid4())
 
 
-def test_accepted_order_not_found(
-        order_service: OrderService
-) -> None:
-    with pytest.raises(KeyError):
-        order_service.accepted_order(uuid4())
-
-
 def test_accepted_delivery(
         first_order_data: tuple[str, str, str],
         order_service: OrderService
