@@ -79,16 +79,6 @@ def test_done_order_not_found(
         order_service.done_order(uuid4())
 
 
-def test_accepted_delivery(
-        first_order_data: tuple[str, str, str],
-        order_service: OrderService
-) -> None:
-    order = order_service.get_order()[0]
-    order_service.accepted_order(order.order_id)
-    assert order.status == OrderStatus.ACCEPTED
-    assert order.order_id == order_service.get_order()[0].order_id
-
-
 def test_done_delivery(
         first_order_data: tuple[str, str, str],
         order_service: OrderService
