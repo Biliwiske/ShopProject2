@@ -20,7 +20,7 @@ created_at: datetime
 def test_product_creation():
     product_id = uuid4()
     order_id = uuid4()
-    name = 'test_product_type_1'
+    name = 'test_product_name_1'
     brand = 'test_product_brand_1'
     price = 10000
     created_at = datetime.now()

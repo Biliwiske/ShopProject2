@@ -12,13 +12,13 @@ def product_service() -> ProductService:
 
 
 @pytest.fixture(scope='session')
-def first_product_data() -> tuple[UUID, str, str, str]:
-    return (uuid4(), 'test_product_type_1', 'test_product_product_1', 'test_product_customer_info_1')
+def first_product_data() -> tuple[UUID, str, str, float]:
+    return uuid4(), 'test_product_name_1', 'test_product_brand_1', 10000
 
 
 @pytest.fixture(scope='session')
-def second_product_data() -> tuple[UUID, str, str, str]:
-    return (uuid4(), 'test_product_type_2', 'test_product_product_2', 'test_product_customer_info_2')
+def second_product_data() -> tuple[UUID, str, str, float]:
+    return uuid4(), 'test_product_name_2', 'test_product_brand_2', 20000
 
 
 def test_empty_product(product_service: ProductService) -> None:
@@ -26,42 +26,42 @@ def test_empty_product(product_service: ProductService) -> None:
 
 
 def test_create_first_product(
-        first_product_data: tuple[UUID, str, str, str],
+        first_product_data: tuple[UUID, str, str, float],
         product_service: ProductService
 ) -> None:
-    ord_id, type, product, customer_info = first_product_data
-    product = product_service.create_product(ord_id, type, product, customer_info)
-    assert product.ord_id == ord_id
-    assert product.type == type
-    assert product.customer_info == customer_info
-    assert product.product == product
+    order_id, name, brand, price = first_product_data
+    product = product_service.create_product(order_id, name, brand, price)
+    assert product.order_id == order_id
+    assert product.name == name
+    assert product.brand == brand
+    assert product.price == price
 
 
 def test_create_second_product(
-        second_product_data: tuple[UUID, str, str, str],
+        second_product_data: tuple[UUID, str, str, float],
         product_service: ProductService
 ) -> None:
-    ord_id, type, product, customer_info = second_product_data
-    product = product_service.create_product(ord_id, type, product, customer_info)
-    assert product.ord_id == ord_id
-    assert product.type == type
-    assert product.customer_info == customer_info
-    assert product.product == product
+    order_id, name, brand, price = second_product_data
+    product = product_service.create_product(order_id, name, brand, price)
+    assert product.order_id == order_id
+    assert product.name == name
+    assert product.brand == brand
+    assert product.price == price
 
 
 def test_get_product_full(
-        first_product_data: tuple[UUID, str, str, str],
-        second_product_data: tuple[UUID, str, str, str],
+        first_product_data: tuple[UUID, str, str, float],
+        second_product_data: tuple[UUID, str, str, float],
         product_service: ProductService
 ) -> None:
     products = product_service.get_product()
     assert len(products) == 2
-    assert products[0].ord_id == first_product_data[0]
-    assert products[0].type == first_product_data[1]
-    assert products[0].product == first_product_data[2]
-    assert products[0].customer_info == first_product_data[3]
+    assert products[0].order_id == first_product_data[0]
+    assert products[0].name == first_product_data[1]
+    assert products[0].brand == first_product_data[2]
+    assert products[0].price == first_product_data[3]
 
-    assert products[1].ord_id == second_product_data[0]
-    assert products[1].type == second_product_data[1]
-    assert products[1].product == second_product_data[2]
-    assert products[1].customer_info == second_product_data[3]
+    assert products[1].order_id == second_product_data[0]
+    assert products[1].name == second_product_data[1]
+    assert products[1].brand == second_product_data[2]
+    assert products[1].price == second_product_data[3]

@@ -17,21 +17,21 @@ def test_empty_list() -> None:
 
 def test_add_first_product() -> None:
     product = Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                        ord_id=uuid4(),
-                        type='test_product_type_1',
-                        create_date=datetime.now(),
-                        product='test_product_product_1',
-                        customer_info='test_customer_info_0')
+                        order_id=uuid4(),
+                        name='test_product_name_1',
+                        brand='test_product_brand_1',
+                        price=10000,
+                        created_at=datetime.now())
     assert product_test_repo.create_product(product) == product
 
 
 def test_add_first_product_repeat() -> None:
     product = Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                        ord_id=uuid4(),
-                        type='test_product_type_1',
-                        create_date=datetime.now(),
-                        product='test_product_product_1',
-                        customer_info='test_customer_info_0')
+                        order_id=uuid4(),
+                        name='test_product_name_1',
+                        brand='test_product_brand_1',
+                        price=10000,
+                        created_at=datetime.now())
     # product_test_repo.create_product(product)
     with pytest.raises(KeyError):
         product_test_repo.create_product(product)
@@ -39,11 +39,11 @@ def test_add_first_product_repeat() -> None:
 
 def test_get_product_by_id() -> None:
     product = Product(product_id=uuid4(),
-                        ord_id=uuid4(),
-                        type='test_product_type_1',
-                        create_date=datetime.now(),
-                        product='test_product_product_1',
-                        customer_info='test_customer_info_0')
+                        order_id=uuid4(),
+                        name='test_product_name_1',
+                        brand='test_product_brand_1',
+                        price=10000,
+                        created_at=datetime.now())
     product_test_repo.create_product(product)
     assert product_test_repo.get_product_by_id(product.product_id) == product
 
