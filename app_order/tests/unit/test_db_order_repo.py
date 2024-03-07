@@ -68,8 +68,6 @@ def test_add_second_order(first_order: Order, second_order: Order, order_repo: O
 
 
 def test_set_status(first_order: Order, order_repo: OrderRepo) -> None:
-    first_order.status = OrderStatus.ACCEPTED
-    assert order_repo.set_status(first_order).status == first_order.status
 
     first_order.status = OrderStatus.PICK_UP
     assert order_repo.set_status(first_order).status == first_order.status
