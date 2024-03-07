@@ -84,7 +84,7 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build ./app_product -f ./app_product/Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
+          docker build ./app_product -f ./app_product/Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/biliwiske/product_service/app_product:latest
 
       - name: Login to YC Registry
         uses: docker/login-action@v3.0.0
@@ -95,7 +95,7 @@ jobs:
 
       - name: Push tag YC Registry
         run: |
-          docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
+          docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/biliwiske/product_service/app_product:latest
 
 
 
