@@ -44,6 +44,12 @@ jobs:
 
       - name: Run unit tests
         run: |
+          sudo docker stop pg-tests
+          sudo docker build . --file Dockerfile --tag back-tests
+          sudo docker run -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres:14
+          sleep 5
+          alembic upgrade head
+          sudo docker run -p 8000:80 -e AMQP_URL=amqp://guest:guest123@51.250.26.59:5672/ -e POSTGRES_URL=postgresql://postgres:password@host.docker.internal:5432/postgres -d back-tests
           python -m pytest ./tests/unit
         working-directory: ./app_order
 
