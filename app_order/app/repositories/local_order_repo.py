@@ -4,15 +4,16 @@ from uuid import UUID
 from app.models.order import Order, OrderStatus
 from typing import Optional
 
-orders: list[Order] = [
-    Order(order_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE, address_info='test_address_info_0', customer_info='test_customer_info_0',
-          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_0'),
-    Order(order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'), status=OrderStatus.CREATE, address_info='test_address_info_1', customer_info='test_customer_info_1',
-          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_1'),
-    Order(order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'), status=OrderStatus.CREATE, address_info='test_address_info_2', customer_info='test_customer_info_2',
-          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_2'),
-]
+#orders: list[Order] = [
+#    Order(order_id=UUID('85db966c-67f1-411e-95c0-f02edfa5464a'), status=OrderStatus.CREATE, address_info='test_address_info_0', customer_info='test_customer_info_0',
+#          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_0'),
+#    Order(order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'), status=OrderStatus.CREATE, address_info='test_address_info_1', customer_info='test_customer_info_1',
+#          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_1'),
+#    Order(order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'), status=OrderStatus.CREATE, address_info='test_address_info_2', customer_info='test_customer_info_2',
+#          create_date=datetime.datetime.now(), completion_date=datetime.datetime.now(), order_info='test_order_info_2'),
+#]
 
+orders = []
 
 class OrderRepo():
     def __init__(self, clear: bool = False) -> None:
