@@ -59,7 +59,7 @@ services:
   app_product:
     build:
       context: .
-      dockerfile: ./app_product/Dockerfile
+      dockerfile: app_product/Dockerfile
     ports:
       - "81:81"
     depends_on:
