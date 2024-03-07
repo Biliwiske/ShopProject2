@@ -110,7 +110,7 @@ jobs:
           yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
           container-name: ${{ secrets.YC_CONTAINER_NAME }}
           folder-id: ${{ secrets.YC_FOLDER_ID }}
-          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
+          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/biliwiske/product_service/app_product:latest
           revision-service-account-id: ${{ secrets.YC_SA_ID }}
           revision-env: |
             POSTGRES_URL_ORD=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_order
