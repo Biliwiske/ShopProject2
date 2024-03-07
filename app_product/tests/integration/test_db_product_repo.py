@@ -23,17 +23,17 @@ def product_id() -> UUID:
 @pytest.fixture(scope='session')
 def first_product() -> Product:
     return Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                    ord_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                    type='test_product_type_1', create_date=datetime.now(),
-                    product='test_product_product_1', customer_info='test_customer_info_0')
+                    order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
+                    name='Ipad Air 3', brand='Iphone',
+                    price=30000, created_at=datetime.now())
 
 
 @pytest.fixture(scope='session')
 def second_product() -> Product:
     return Product(product_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
-                    ord_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
-                    type='test_product_type_2', create_date=datetime.now(),
-                    product='test_product_product_2', customer_info='test_customer_info_1')
+                    order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
+                   name='Iphone 16 pro max ultra deluxe edition', brand='Iphone',
+                   price=300000, created_at=datetime.now())
 
 
 # def test_empty_list(product_repo: ProductRepo) -> None:
@@ -51,23 +51,23 @@ def test_add_first_product_repeat(first_product: Product, product_repo: ProductR
 
 
 def test_get_product_by_id(first_product: Product, product_repo: ProductRepo) -> None:
-    assert productument_repo.get_productument_by_id(first_productument.product_id) == first_productument
+    assert product_repo.get_product_by_id(first_product.product_id) == first_product
 
 
-def test_get_productument_by_id_error(productument_repo: ProductRepo) -> None:
+def test_get_product_by_id_error(product_repo: ProductRepo) -> None:
     with pytest.raises(KeyError):
-        productument_repo.get_productument_by_id(uuid4())
+        product_repo.get_product_by_id(uuid4())
 
 
-def test_add_second_productument(first_productument: Product, second_productument: Product, productument_repo: ProductRepo) -> None:
-    assert productument_repo.create_productument(second_document) == second_document
-    documents = [document_repo.get_document_by_id(first_document.doc_id),
-                 document_repo.get_document_by_id(second_document.doc_id)]
-    assert len(documents) == 2
-    assert documents[0] == first_document
-    assert documents[1] == second_document
+def test_add_second_product(first_product: Product, second_product: Product, product_repo: ProductRepo) -> None:
+    assert product_repo.create_product(second_product) == second_product
+    products = [product_repo.get_product_by_id(first_product.product_id),
+                 product_repo.get_product_by_id(second_product.product_id)]
+    assert len(products) == 2
+    assert products[0] == first_product
+    assert products[1] == second_product
 
 
-def test_delete_created_order(first_document: Product, second_document: Product, document_repo: Product) -> None:
-    assert document_repo.delete_document_by_id(first_document.doc_id) == first_document
-    assert document_repo.delete_document_by_id(second_document.doc_id) == second_document
+def test_delete_created_order(first_product: Product, second_product: Product, product_repo: Product) -> None:
+    assert product_repo.delete_product_by_id(first_product.product_id) == first_product
+    assert product_repo.delete_product_by_id(second_product.product_id) == second_product

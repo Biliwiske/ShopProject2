@@ -50,4 +50,4 @@ def test_get_product_by_id() -> None:
 
 def test_get_product_by_id_error() -> None:
     with pytest.raises(KeyError):
-        productument_test_repo.get_productument_by_id(uuid4())
+        product_test_repo.get_product_by_id(uuid4())

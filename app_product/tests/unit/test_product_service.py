@@ -50,18 +50,18 @@ def test_create_second_product(
 
 
 def test_get_product_full(
-        first_productument_data: tuple[UUID, str, str, str],
-        second_productument_data: tuple[UUID, str, str, str],
-        productument_service: ProductService
+        first_product_data: tuple[UUID, str, str, str],
+        second_product_data: tuple[UUID, str, str, str],
+        product_service: ProductService
 ) -> None:
-    productuments = productument_service.get_productument()
-    assert len(productuments) == 2
-    assert productuments[0].ord_id == first_productument_data[0]
-    assert productuments[0].type == first_productument_data[1]
-    assert productuments[0].product == first_productument_data[2]
-    assert productuments[0].customer_info == first_productument_data[3]
+    products = product_service.get_product()
+    assert len(products) == 2
+    assert products[0].ord_id == first_product_data[0]
+    assert products[0].type == first_product_data[1]
+    assert products[0].product == first_product_data[2]
+    assert products[0].customer_info == first_product_data[3]
 
-    assert productuments[1].ord_id == second_productument_data[0]
-    assert productuments[1].type == second_productument_data[1]
-    assert productuments[1].product == second_document_data[2]
-    assert documents[1].customer_info == second_document_data[3]
+    assert products[1].ord_id == second_product_data[0]
+    assert products[1].type == second_product_data[1]
+    assert products[1].product == second_product_data[2]
+    assert products[1].customer_info == second_product_data[3]
