@@ -16,12 +16,9 @@ def test_empty_list() -> None:
 
 
 def test_add_first_product() -> None:
-    product = Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                        order_id=uuid4(),
-                        name='test_product_name_1',
-                        brand='test_product_brand_1',
-                        price=10000,
-                        created_at=datetime.now())
+    product = Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'), order_id=uuid4(),
+                      name='test_product_name_1', brand='test_product_brand_1', price=10000,
+                      created_at=datetime.now())
     assert product_test_repo.create_product(product) == product
 
 

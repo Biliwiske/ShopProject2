@@ -38,7 +38,7 @@ jobs:
 
       - name: Prepare unit tests
         run: |
-          sudo apt update
+          sudo apt update 
           sudo apt install -y python3-pip
           pip install -r ./app_order/requirements.txt
 
@@ -113,6 +113,6 @@ jobs:
           revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/delivery_service/app_product:latest
           revision-service-account-id: ${{ secrets.YC_SA_ID }}
           revision-env: |
-            POSTGRES_URL_ORD=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_microservice_db_order
-            POSTGRES_URL_DOC=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_microservice_db_product
+            POSTGRES_URL_ORD=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_order
+            POSTGRES_URL_DOC=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_product
             AMQP_URL=amqp://guest:guest123@51.250.26.59:5672/
