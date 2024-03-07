@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /app_order
 
-COPY .requirements.txt /app_order
+COPY ./requirements.txt /app_order/
 RUN pip install --no-cache-dir --upgrade -r /app_order/requirements.txt
 
 COPY ./app /app_order/app
