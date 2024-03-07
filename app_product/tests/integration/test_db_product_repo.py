@@ -23,15 +23,15 @@ def product_id() -> UUID:
 @pytest.fixture(scope='session')
 def first_product() -> Product:
     return Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                    order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                    name='test_product_name_1', brand='test_product_brand_1',
-                    price=10000, created_at=datetime.now())
+                   order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
+                   name='test_product_name_1', brand='test_product_brand_1',
+                   price=10000, created_at=datetime.now())
 
 
 @pytest.fixture(scope='session')
 def second_product() -> Product:
     return Product(product_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
-                    order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
+                   order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
                    name='test_product_name_2', brand='test_product_brand_2',
                    price=20000, created_at=datetime.now())
 

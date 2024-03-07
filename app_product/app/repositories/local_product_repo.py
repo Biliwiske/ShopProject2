@@ -1,5 +1,3 @@
-import datetime
-from decimal import Decimal
 from uuid import UUID
 
 from app.models.product import Product
