@@ -1,5 +1,3 @@
-# /tests/unit/test_printing_model.py
-
 from datetime import datetime
 from uuid import uuid4
 
