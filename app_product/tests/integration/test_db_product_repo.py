@@ -24,16 +24,16 @@ def product_id() -> UUID:
 def first_product() -> Product:
     return Product(product_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
                     order_id=UUID('31babbb3-5541-4a2a-8201-537cdff25fed'),
-                    name='Ipad Air 3', brand='Iphone',
-                    price=30000, created_at=datetime.now())
+                    name='test_product_name_1', brand='test_product_brand_1',
+                    price=10000, created_at=datetime.now())
 
 
 @pytest.fixture(scope='session')
 def second_product() -> Product:
     return Product(product_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
                     order_id=UUID('45309954-8e3c-4635-8066-b342f634252c'),
-                   name='Iphone 16 pro max ultra deluxe edition', brand='Iphone',
-                   price=300000, created_at=datetime.now())
+                   name='test_product_name_2', brand='test_product_brand_2',
+                   price=20000, created_at=datetime.now())
 
 
 # def test_empty_list(product_repo: ProductRepo) -> None:
@@ -62,7 +62,7 @@ def test_get_product_by_id_error(product_repo: ProductRepo) -> None:
 def test_add_second_product(first_product: Product, second_product: Product, product_repo: ProductRepo) -> None:
     assert product_repo.create_product(second_product) == second_product
     products = [product_repo.get_product_by_id(first_product.product_id),
-                 product_repo.get_product_by_id(second_product.product_id)]
+                product_repo.get_product_by_id(second_product.product_id)]
     assert len(products) == 2
     assert products[0] == first_product
     assert products[1] == second_product
