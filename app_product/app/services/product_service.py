@@ -16,7 +16,8 @@ class ProductService:
         return self.product_repo.get_product()
 
     def create_product(self, order_id: UUID, name: str, brand: str, price: str) -> Product:
-        product = Product(product_id=uuid4(), order_id=order_id, name=name, brand=brand, price=price, created_at = datetime.utcnow())
+        product = Product(product_id=uuid4(), order_id=order_id, name=name, brand=brand, price=price,
+                          created_at=datetime.now())
         return self.product_repo.create_product(product)
 
     def delete_product(self, product_id: UUID) -> None:
