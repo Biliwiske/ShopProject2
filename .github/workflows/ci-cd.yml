@@ -84,7 +84,7 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build ./app_product -f ./app_product/Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/efiiiimov/delivery_service/app_product:latest
+          docker build ./app_product -f ./app_product/Dockerfile --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
 
       - name: Login to YC Registry
         uses: docker/login-action@v3.0.0
@@ -95,7 +95,7 @@ jobs:
 
       - name: Push tag YC Registry
         run: |
-          docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/delivery_service/app_product:latest
+          docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
 
 
 
@@ -110,7 +110,7 @@ jobs:
           yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
           container-name: ${{ secrets.YC_CONTAINER_NAME }}
           folder-id: ${{ secrets.YC_FOLDER_ID }}
-          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/delivery_service/app_product:latest
+          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/kiselev/product_service/app_product:latest
           revision-service-account-id: ${{ secrets.YC_SA_ID }}
           revision-env: |
             POSTGRES_URL_ORD=postgresql://secUREusER:StrongEnoughPassword)@51.250.26.59:5432/kiselev_order
